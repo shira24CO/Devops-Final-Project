@@ -1,21 +1,17 @@
+/* eslint linebreak-style: ["error", "windows"] */
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
-
 
 const port = process.env.PORT || 4000;
 const app = express();
 
-app.get('/', (req, res ) => {
-    console.log('A new request has arrived to index.js');
+app.get('/', (req, res) => {
     res.send('Hello From the server');
 });
-app.get('/Register', (req, res ) => {
-
-    res.sendFile(path.resolve('Register.js'));
+app.get('/Register', (req, res) => {
+    res.sendFile(path.resolve(1));
 });
 
 app.listen(port, () => {
-    console.log("server is up and running at port "+ port);
+    console.log(`server is up and running at port ${port}`);
 });
-
