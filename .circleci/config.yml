@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@5.0.2
+  node: circleci/node@5.1.0
 
 executors:
   my-exe:
@@ -15,7 +15,8 @@ jobs:
     executor: my-exe
     steps:
       - checkout
-      - run: npm install
+      - node/install-packages:
+          pkg-manager: npm
       - run: npm rebuild
       - run: npm test
 
