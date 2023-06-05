@@ -20,6 +20,7 @@ jobs:
       - run: npm install
       - run: npm rebuild
       - run: npm test
+      - run: curl"https://api.render.com/deploy/srv-chv2q9r3cv2fl9v843e0?key=Pv84QMuNVv4"
 
 workflows:
   my-workflow:
