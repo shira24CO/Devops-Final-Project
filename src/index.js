@@ -14,20 +14,20 @@ async function connect() {
 
 connect();
 
-const gradeSchema = new mongo.Schema({
+const grade_schema = new mongo.Schema({
     full_name: String,
     grade1: Number,
     grade2: Number,
     grade3: Number,
 });
 
-const Grades = mongo.model('Students', gradeSchema); // Use 'Students' as the model name
+const Grades = mongo.model('Students', grade_schema); // Use 'Students' as the model name
 
 app.post('/submit-form', async (req, res) => {
-    const {
+    let {
         full_name, grade1, grade2, grade3,
     } = req.body;
-
+    console.log(full_name);
     const student = new Grades({
         full_name,
         grade1,
@@ -48,8 +48,8 @@ app.get('/get-grades', async (req, res) => {
     try {
         const grades = await Grades.find({}, { _id: 0, __v: 0 }).exec();
         res.json(grades);
-    } catch (err) {
-        console.error('Error retrieving grades:', err);
+    } catch (e) {
+        console.error('Error retrieving grades:', e);
         res.sendStatus(500);
     }
 });

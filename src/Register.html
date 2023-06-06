@@ -12,8 +12,8 @@
 <div class="container">
     <h1></h1>
     <form action="/submit-form" method="POST">
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" name="fullName" required pattern="[A-Za-z ]+">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required pattern="[A-Za-z ]+">
 
         <label for="grade1">Grade 1:</label>
         <input type="number" id="grade1" name="grade1" required min="0" max="100">
@@ -60,8 +60,8 @@
 
                     grades.forEach((grade) => {
                         const row = document.createElement('tr');
-                        const fullNameCell = document.createElement('td');
-                        fullNameCell.textContent = grade.fullName;
+                        const full_name_c = document.createElement('td');
+                        full_name_c.textContent = grade.full_name;
                         const grade1Cell = document.createElement('td');
                         grade1Cell.textContent = grade.grade1;
                         const grade2Cell = document.createElement('td');
@@ -69,7 +69,7 @@
                         const grade3Cell = document.createElement('td');
                         grade3Cell.textContent = grade.grade3;
 
-                        row.appendChild(fullNameCell);
+                        row.appendChild(full_name_c);
                         row.appendChild(grade1Cell);
                         row.appendChild(grade2Cell);
                         row.appendChild(grade3Cell);
