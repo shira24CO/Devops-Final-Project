@@ -11,7 +11,9 @@
   "author": "Shoham & Shira",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mogoose": "^0.0.1-security",
+    "mongoose": "^7.2.2"
   },
   "devDependencies": {
     "@types/chai": "^4.3.5",

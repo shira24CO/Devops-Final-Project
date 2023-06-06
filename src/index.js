@@ -1,17 +1,63 @@
 /* eslint linebreak-style: ["error", "windows"] */
-const express = require('express');
-const path = require('path');
+const mongo = require('mongoose');
+const app = require('./server');
 
-const port = process.env.PORT || 4000;
-const app = express();
+const uri = 'mongodb+srv://moyalshoham:xjShq9cFspKGRrAr@devops-project.xq5lkah.mongodb.net/DevopsDB?retryWrites=true&w=majority';
 
-app.get('/', (req, res) => {
-    res.send('Hello From the server');
+async function connect() {
+    try {
+        await mongo.connect(uri);
+    } catch (error) {
+        console.error('Error connecting to URI: ', error);
+    }
+}
+
+connect();
+
+const gradeSchema = new mongo.Schema({
+    full_name: String,
+    grade1: Number,
+    grade2: Number,
+    grade3: Number,
 });
-app.get('/Register', (req, res) => {
-    res.sendFile(path.resolve(1));
+
+const Grades = mongo.model('Students', gradeSchema); // Use 'Students' as the model name
+
+app.post('/submit-form', async (req, res) => {
+    const {
+        full_name, grade1, grade2, grade3,
+    } = req.body;
+
+    const student = new Grades({
+        full_name,
+        grade1,
+        grade2,
+        grade3,
+    });
+
+    try {
+        await student.save(); // Save the student instance
+        res.redirect('/');
+    } catch (err) {
+        console.error('Error saving grades to database:', err);
+        res.sendStatus(500);
+    }
 });
+
+app.get('/get-grades', async (req, res) => {
+    try {
+        const grades = await Grades.find({}, { _id: 0, __v: 0 }).exec();
+        res.json(grades);
+    } catch (err) {
+        console.error('Error retrieving grades:', err);
+        res.sendStatus(500);
+    }
+});
+
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-    console.log(`server is up and running at port ${port}`);
+    console.log(`Server is online now - localhost:${port}/`);
 });
+
+module.exports = app;
