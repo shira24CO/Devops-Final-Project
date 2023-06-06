@@ -5,20 +5,20 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to bottom right, #87ceeb, #00bfff);
-    font-family: 'Poppins', sans-serif;
-}
-
-.container {
+    background: #ffcccc;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .container {
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
-
-button#showGradesBtn {
-    background-color: #4285f4;
+  }
+  
+  button#showGradesBtn {
+    background-color: #6a006a;
     color: #fff;
     padding: 10px 20px;
     font-size: 16px;
@@ -26,52 +26,52 @@ button#showGradesBtn {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 20px;
-}
-
-h1 {
+  }
+  
+  h1 {
     text-align: center;
     font-weight: 500;
     font-size: 32px;
     margin-bottom: 20px;
-}
-
-form {
+  }
+  
+  form {
     display: flex;
     flex-direction: column;
-}
-
-label {
+  }
+  
+  label {
     margin-top: 10px;
     font-weight: 400;
     font-size: 16px;
-}
-
-input[type="text"],
-input[type="number"] {
-    padding: 8px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    padding: 12px;
     border-radius: 4px;
     border: 1px solid #ccc;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-}
-
-input[type="submit"] {
+    font-size: 16px;
+  }
+  
+  input[type="submit"] {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #6a006a;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-.popup {
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #6a006a;
+  }
+  
+  .popup {
     display: none;
     position: fixed;
     z-index: 1;
@@ -81,9 +81,9 @@ input[type="submit"]:hover {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-}
-
-.popup-content {
+  }
+  
+  .popup-content {
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -92,35 +92,35 @@ input[type="submit"]:hover {
     max-width: 600px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.popup-content table {
+  }
+  
+  .popup-content table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.popup-content th,
-.popup-content td {
+  }
+  
+  .popup-content th,
+  .popup-content td {
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ddd;
-}
-
-.popup-content th {
+  }
+  
+  .popup-content th {
     background-color: #f2f2f2;
-}
-
-.popup-content .close {
+  }
+  
+  .popup-content .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-}
-
-.popup-content .close:hover,
-.popup-content .close:focus {
+  }
+  
+  .popup-content .close:hover,
+  .popup-content .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
+  }

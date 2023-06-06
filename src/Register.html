@@ -6,14 +6,14 @@
     <title>Grades Input Form</title>
     <link rel="stylesheet" href="Register.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="container">
     <h1></h1>
     <form action="/submit-form" method="POST">
-        <label for="full_name">Full Name:</label>
-        <input type="text" id="full_name" name="full_name" required pattern="[A-Za-z ]+">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required pattern="[A-Za-z ]+">
 
         <label for="grade1">Grade 1:</label>
         <input type="number" id="grade1" name="grade1" required min="0" max="100">
@@ -60,8 +60,8 @@
 
                     grades.forEach((grade) => {
                         const row = document.createElement('tr');
-                        const full_name_c = document.createElement('td');
-                        full_name_c.textContent = grade.full_name;
+                        const fullNameCell = document.createElement('td');
+                        fullNameCell.textContent = grade.fullName;
                         const grade1Cell = document.createElement('td');
                         grade1Cell.textContent = grade.grade1;
                         const grade2Cell = document.createElement('td');
@@ -69,7 +69,7 @@
                         const grade3Cell = document.createElement('td');
                         grade3Cell.textContent = grade.grade3;
 
-                        row.appendChild(full_name_c);
+                        row.appendChild(fullNameCell);
                         row.appendChild(grade1Cell);
                         row.appendChild(grade2Cell);
                         row.appendChild(grade3Cell);
@@ -81,12 +81,41 @@
                 .catch((error) => {
                     console.error('Error fetching grades:', error);
                 });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                gradesPopup.style.display = 'none';
+            });
+
+            const fullNameInput = document.getElementById('fullName');
+            const grade1Input = document.getElementById('grade1');
+            const grade2Input = document.getElementById('grade2');
+            const grade3Input = document.getElementById('grade3');
+            const form = document.querySelector('form');
+            const errorContainer = document.createElement('div');
+            errorContainer.classList.add('error');
+            form.insertBefore(errorContainer, form.lastElementChild);
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const fullName = fullNameInput.value;
+                const grade1 = Number(grade1Input.value);
+                const grade2 = Number(grade2Input.value);
+                const grade3 = Number(grade3Input.value);
+
+                errorContainer.textContent = '';
+
+                if (fullName === '' || grade1 === 0 || grade2 === 0 || grade3 === 0) {
+                    errorContainer.textContent = 'Please fill in all fields.';
+                } else if (grade1 < 0 || grade1 > 100 || grade2 < 0 || grade2 > 100 || grade3 < 0 || grade3 > 100) {
+                    errorContainer.textContent = 'Each score must be between 0 and 100.';
+                } else {
+                // Submit the form
+                    form.submit();
+                }
+            });
         });
 
-        closeBtn.addEventListener('click', () => {
-            gradesPopup.style.display = 'none';
-        });
-    });
 </script>
 </body>
 </html>
